@@ -9,4 +9,4 @@ class Count extends Component {
   }
 }
 
-export default AddForm;
+export default Count;

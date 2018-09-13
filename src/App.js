@@ -11,6 +11,9 @@ import LoginPage from './components/LoginPage/LoginPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
 import UserPage from './components/UserPage/UserPage';
 import InfoPage from './components/InfoPage/InfoPage';
+import Shelf from './components/Shelf/Shelf';
+import AddForm from './components/AddForm/AddForm';
+import Count from './components/Count/Count';
 
 import './styles/main.css';
 
@@ -35,6 +38,18 @@ const App = () => (
         <Route
           path="/info"
           component={InfoPage}
+        />
+        <Route 
+        path="/shelf"
+        component={Shelf}
+        />
+        <Route 
+        path="/addForm"
+        component={AddForm}
+        />
+        <Route
+        path="/count"
+        component={Count}
         />
         {/* OTHERWISE (no path!) */}
         <Route render={() => <h1>404</h1>} />
