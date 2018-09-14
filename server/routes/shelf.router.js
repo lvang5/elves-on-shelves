@@ -16,6 +16,7 @@ router.get('/', (req, res) => {
     }
 });
 
+
 /**
  * Add an item for the logged in user to the shelf
  */
@@ -45,7 +46,7 @@ router.put('/:id', (req, res) => {
  * they have added to the shelf
  */
 router.get('/count', (req, res) => {
-
+const query = ``
 });
 
 
