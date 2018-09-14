@@ -6,13 +6,13 @@ const router = express.Router();
  * Get all of the items on the shelf
  */
 router.get('/', (req, res) => {
-    if(req.isAuthenticated()) {
+    if (req.isAuthenticated()) {
         const queryText = `SELECT * FROM "item";`;
         pool.query(queryText)
-        .then(response => res.send(response.rows))
-        .catch(error => res.sendStatus(500));
+            .then(response => res.send(response.rows))
+            .catch(error => res.sendStatus(500));
     } else {
-      res.sendStatus(401);
+        res.sendStatus(401);
     }
 });
 
@@ -46,7 +46,19 @@ router.put('/:id', (req, res) => {
  * they have added to the shelf
  */
 router.get('/count', (req, res) => {
-const query = ``
+    console.log('GOT REQUEST');
+    
+    if (req.isAuthenticated()) {
+        const query = `SELECT "username",
+                COUNT ("item"."id") FROM "item"
+                JOIN "person" ON "person"."id" = "item"."person_id"
+                GROUP BY "person"."id";`;
+        pool.query(query)
+            .then(response => res.send(response.rows))
+            .catch(error => res.sendStatus(500));
+    } else {
+        res.sendStatus(401);
+    }
 });
 
 

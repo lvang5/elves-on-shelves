@@ -7,11 +7,5 @@ const shelfReducer = (state = [], action) => {
   }
 };
 
-const counter = (state = [], action )=>{
-  switch (action.type){
-    case 'GET_COUNT':
-    return [...state,action.payload];
-  }
-  return state;
-}
-export default shelfReducer;
+
+export default (shelfReducer);
