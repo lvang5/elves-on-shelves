@@ -27,13 +27,18 @@ class Shelf extends Component {
     });
   }
 
+  handleDelete = () => {
+    console.log('DELETE ME');
+    
+  };
+
   render() {
     return (
       <Grid container justify="space-around" alignItems="center" style={{marginTop: '20px'}}>
         {this.props.shelf.map((item)=> {
           return (
-            <Grid item>
-              <Card key={item.id}>
+            <Grid item key={item.id}>
+              <Card >
                 <CardMedia image={item.image_url}/>
                 <CardContent>
                   <Typography variant="body1">
@@ -41,7 +46,7 @@ class Shelf extends Component {
                   </Typography>
                 </CardContent>
                 <CardActions>
-                  <Button>Delete Me</Button>
+                  <Button onClick={this.handleDelete}>Delete Me</Button>
                 </CardActions>
               </Card>
             </Grid>
