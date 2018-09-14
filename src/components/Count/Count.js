@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import {connect}from 'react-redux';
 import axios from 'axios';
-import { stringify } from 'querystring';
-import Header from "../Header/Header"
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
+
+
 const mapStateToProps = state =>({
   counter: state.counter
 });
@@ -35,35 +41,35 @@ getCount(){
 
   render() {
     return (
-             <div>
+             <Paper>
              
-                <table>
-                  <thead>
-                    <tr>
+                <Table>
+                  <TableHead>
+                    <TableRow>
                       <th>User Name</th>
                       <th># of Items Added</th>
-                    </tr>
-                  </thead>
-                  <tbody>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
                     
         
                       {this.props.counter.map((thing)=>{
                          
                         return(
-                          <tr>
-                            <td>{thing.username}</td>
-                            <td>{thing.count}</td>
-                          </tr>
+                          <TableRow>
+                            <TableCell>{thing.username}</TableCell>
+                            <TableCell>{thing.count}</TableCell>
+                          </TableRow>
                           
                           
                         );
                       })}
                       
                     
-                  </tbody>
-                </table>
+                  </TableBody>
+                </Table>
 
-             </div>
+             </Paper>
       );
   }
 }
