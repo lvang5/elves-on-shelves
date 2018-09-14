@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Nav from '../../components/Nav/Nav';
 import axios from 'axios';
 
 const mapStateToProps = state => ({
@@ -47,7 +46,6 @@ class AddForm extends Component {
   render() {
     return (
       <div>
-        <Nav />
         <div>
           <form onSubmit={this.addNewElf}>
             <label>Description</label>
