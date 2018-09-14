@@ -21,7 +21,22 @@ router.get('/', (req, res) => {
  * Add an item for the logged in user to the shelf
  */
 router.post('/', (req, res) => {
-
+    console.log(req.body);
+  if(req.isAuthenticated()) {
+    const elfToAdd = req.body;
+    const queryText = `INSERT INTO "item"
+                        ("person_id", "description", "image_url")
+                        VALUES ($1, $2, $3);`;
+    pool.query(queryText, [req.user.id, elfToAdd.newElf.description, elfToAdd.newElf.url])
+    .then((results) =>{
+        res.send(results.rows);
+    }).catch((error)=>{
+        console.log('POST elf failed', error);
+        res.sendStatus(500);
+    });
+  } else {
+      res.sendStatus(403);
+  }
 });
 
 
@@ -29,7 +44,15 @@ router.post('/', (req, res) => {
  * Delete an item if it's something the logged in user added
  */
 router.delete('/:id', (req, res) => {
-
+  const idOfItemtoDelete = req.params.id;
+    console.log('deleting ', idOfItemtoDelete);
+    const queryText = 'DELETE FROM "item" WHERE "id" = $1;';
+    pool.query(queryText, [idOfItemtoDelete]).then((result) => {
+        res.sendStatus(200);
+    }).catch( (error) => {
+        console.log('Error in delete', error);
+        res.sendStatus(500);
+    });
 });
 
 
