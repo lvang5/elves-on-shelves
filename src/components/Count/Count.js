@@ -14,6 +14,7 @@ constructor(props){
 componentDidMount(){
   this.getCount();
 }
+
 getCount(){
   console.log('Getting Count');
   axios({
