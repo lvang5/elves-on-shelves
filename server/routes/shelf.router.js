@@ -20,12 +20,13 @@ router.get('/', (req, res) => {
  * Add an item for the logged in user to the shelf
  */
 router.post('/', (req, res) => {
+    console.log(req.body);
   if(req.isAuthenticated()) {
     const elfToAdd = req.body;
     const queryText = `INSERT INTO "item"
-                        ("person_id", "name", "description", "image_url")
-                        VALUES ($1, $2, $3, $4);`;
-    pool.query(queryText, [req.user.id, elfToAdd.name, elfToAdd.description, elfToAdd.url])
+                        ("person_id", "description", "image_url")
+                        VALUES ($1, $2, $3);`;
+    pool.query(queryText, [req.user.id, elfToAdd.newElf.description, elfToAdd.newElf.url])
     .then((results) =>{
         res.send(results.rows);
     }).catch((error)=>{

@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Nav from '../../components/Nav/Nav';
+import axios from 'axios';
+
+const mapStateToProps = state => ({
+  add: state.add,
+});
 
 // client-side route: "/addForm"
 class AddForm extends Component {
@@ -7,7 +13,6 @@ class AddForm extends Component {
     super(props);
     this.state = {
       newElf: {
-        name: '',
         description: '',
         url: '',
       }
@@ -24,10 +29,19 @@ class AddForm extends Component {
     });
   }
 
-
   addNewElf = event => {
     event.preventDefault();
-    this.props.dispatch({type: 'ADD_ELF', payload: this.state.newElf})
+    this.props.dispatch({ type: 'ADD_ELF', payload: this.state.newElf })    
+    axios({
+      method: 'POST',
+      url: '/api/shelf',
+      data: { newElf: this.state.newElf }
+    }).then((response) => {
+      console.log('success with POST');
+    }).catch((error) => {
+      console.log(error);
+      alert('unable to add elf');
+    })
   }
 
   render() {
@@ -35,15 +49,11 @@ class AddForm extends Component {
       <div>
         <Nav />
         <div>
-          {JSON.stringify(this.state)}
           <form onSubmit={this.addNewElf}>
-            <label>Name</label>
-            <input type="text" name="name" onChange={this.handleChange} />
-            <br />
             <label>Description</label>
             <input type="text" name="description" onChange={this.handleChange} />
             <br />
-            <lable>Image Url</lable>
+            <label>Image Url</label>
             <input type="text" name="url" onChange={this.handleChange} />
             <br />
             <input type="submit" value="Submit" />
@@ -54,4 +64,4 @@ class AddForm extends Component {
   }
 }
 
-export default AddForm;
+export default connect(mapStateToProps)(AddForm);
