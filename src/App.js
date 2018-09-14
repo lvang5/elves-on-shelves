@@ -19,42 +19,44 @@ import './styles/main.css';
 
 const App = () => (
   <div>
-    <Header title="Project Base" />
+    
     <Router>
-      <Switch>
-        <Redirect exact from="/" to="/home" />
-        <Route
-          path="/home"
-          component={LoginPage}
-        />
-        <Route
-          path="/register"
-          component={RegisterPage}
-        />
-        <Route
-          path="/user"
-          component={UserPage}
-        />
-        <Route
-          path="/info"
-          component={InfoPage}
-        />
-        <Route 
-        path="/shelf"
-        component={Shelf}
-        />
-        <Route 
-        path="/addForm"
-        component={AddForm}
-        />
-        <Route
-        path="/count"
-        component={Count}
-        />
-        {/* OTHERWISE (no path!) */}
-        <Route render={() => <h1>404</h1>} />
-
-      </Switch>
+      <div>
+        <Header title="Project Base" />
+        <Switch>
+          <Redirect exact from="/" to="/home" />
+          <Route
+            path="/home"
+            component={LoginPage}
+          />
+          <Route
+            path="/register"
+            component={RegisterPage}
+          />
+          <Route
+            path="/user"
+            component={UserPage}
+          />
+          <Route
+            path="/info"
+            component={InfoPage}
+          />
+          <Route 
+          path="/shelf"
+          component={Shelf}
+          />
+          <Route 
+          path="/addForm"
+          component={AddForm}
+          />
+          <Route
+          path="/count"
+          component={Count}
+          />
+          {/* OTHERWISE (no path!) */}
+          <Route render={() => <h1>404</h1>} />
+        </Switch>
+      </div>
     </Router>
   </div>
 );
