@@ -10,7 +10,7 @@ class Shelf extends Component {
     shelf: []
   };
 
-  componentDidMount() {
+  getShelf = () => {
     axios.get('/api/shelf')
     .then(response => {
       const action = {
@@ -18,13 +18,14 @@ class Shelf extends Component {
         payload: response.data
       };
       this.props.dispatch(action);
-      // this.setState({
-      //   shelf: response.data
-      // });
     }).catch(error => {
       console.log(error);
       this.props.history.push('home');
     });
+  };
+
+  componentDidMount() {
+    this.getShelf();
   }
 
   handleDelete = () => {
