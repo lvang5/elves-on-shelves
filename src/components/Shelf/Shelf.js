@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 
+
 // client-side route: "/shelf"
 class Shelf extends Component {
   state = {
@@ -27,7 +28,12 @@ class Shelf extends Component {
 
   render() {
     return (
-      <div>{JSON.stringify(this.props.shelf)}</div>
+      <div>
+      
+      
+      
+      
+      {JSON.stringify(this.props.shelf)}</div>
     );
   }
 }
