@@ -36,7 +36,7 @@ getCount(){
   render() {
     return (
              <div>
-               <Header />
+             
                 <table>
                   <thead>
                     <tr>
