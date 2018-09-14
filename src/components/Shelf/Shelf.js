@@ -46,8 +46,8 @@ class Shelf extends Component {
         {this.props.shelf.map((item)=> {
           return (
             <Grid item key={item.id}>
-              <Card >
-                <CardMedia image={item.image_url}/>
+              <Card>
+                <CardMedia image={item.image_url} style={{height: '150px'}}/>
                 <CardContent>
                   <Typography variant="body1">
                   {item.description}
