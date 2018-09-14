@@ -1,7 +1,7 @@
-#Shelf Elves
+# Shelf Elves
 What are your michievious elves up to? Keep track of them on a neatly-organized shelf.
 
-###Built With
+### Built With
  - JavaScript
  - React
  - Redux
@@ -9,10 +9,10 @@ What are your michievious elves up to? Keep track of them on a neatly-organized 
  - PostgreSQL
 
 
-##Getting Started
+## Getting Started
 
 
-###Installing
+### Installing
 Steps to get the development environment running.
 1. Download this repo from github (click the lime green clone or download button)
 
@@ -80,7 +80,7 @@ This page should include a form that allows user to add items to the shelf. Each
 This page displays a list of users along with the total number of items they have added to the shelf.
 
 
-###Authors
+### Authors
 Built by the hottest hobgoblins in the development game: 
 
 - Jennifer Petzoldt
