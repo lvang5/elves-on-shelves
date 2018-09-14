@@ -28,9 +28,16 @@ class Shelf extends Component {
     this.getShelf();
   }
 
-  handleDelete = () => {
+  handleDelete = id => () => {
     console.log('DELETE ME');
-    
+    axios.delete('/api/shelf/'+ id)
+    .then(response => {
+      this.getShelf();
+      console.log('Oh no this item has been deleted', response);
+    }).catch(error => {
+      console.log('You got an error');
+      alert('There is an error somewhere, check here:', error);
+    })
   };
 
   render() {
@@ -47,7 +54,7 @@ class Shelf extends Component {
                   </Typography>
                 </CardContent>
                 <CardActions>
-                  <Button onClick={this.handleDelete}>Delete Me</Button>
+                  <Button onClick={this.handleDelete(item.id)}>Delete Me</Button>
                 </CardActions>
               </Card>
             </Grid>
